@@ -75,7 +75,7 @@ def merge_in_place(arr, start, mid, end):
             arr[start] = val
             start += 1
             mid += 1
-            end += 1
+            s += 1
 
 
 def merge_sort_in_place(arr, l, r):
@@ -85,6 +85,7 @@ def merge_sort_in_place(arr, l, r):
         merge_sort_in_place(arr, l, m)
         merge_sort_in_place(arr, m + 1, r)
         merge_in_place(arr, l, m, r)
+        print(arr)
     return arr
     # return arr
 
