@@ -20,12 +20,27 @@ def binary_search(arr, target, start, end):
     # or iteratively
 
 
-def agnostic_binary_search(arr, target):
+def agnostic_binary_search(arr, target, count=0):
     # Your code here
-    pass
+    pivot = (len(arr)) // 2
+    print('pivot', pivot)
+    if arr[pivot] == target:
+        return pivot
+    elif arr[pivot] < arr[0]:
+        if arr[pivot] < target:
+            return pivot + agnostic_binary_search(arr[pivot:], target)
+        else:
+            return agnostic_binary_search(arr[:pivot], target)
+    elif arr[pivot] > arr[0]:
+        if arr[pivot] > target:
+            return pivot + agnostic_binary_search(arr[:pivot], target)
+        else:
+            return agnostic_binary_search(arr[pivot:], target)
+    else:
+        return -1
 
 
 arr1 = [-9, -8, -6, -4, -3, -2, 0, 1, 2, 3, 5, 7, 8, 9]
 # arr = [2, 3, 4, 10, 40]
 
-print(binary_search(arr1, -8, 0, len(arr1) - 1))
+print(agnostic_binary_search(arr1, 2))
